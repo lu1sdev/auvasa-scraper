@@ -10,7 +10,13 @@ block content
 			td Tiempo
 	
 		for horario in horarios
-			tr
-				td #{horario.linea}
-				td #{horario.dest}
-				td #{horario.tiempo}
+			if horario.tiempo != 0
+				tr
+					td #{horario.linea}
+					td #{horario.dest}
+					td #{horario.tiempo}
+			else
+				tr.blink
+					td #{horario.linea}
+					td #{horario.dest}
+					td #{horario.tiempo}
