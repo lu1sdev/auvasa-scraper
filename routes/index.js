@@ -10,7 +10,7 @@ var iconv = require('iconv-lite');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('main', { title: 'Express' });
 });
 
 router.get('/parada/:num', function(req, res, next) {
