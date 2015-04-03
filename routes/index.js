@@ -6,7 +6,6 @@ var router = express.Router();
 
 var cheerio = require('cheerio');
 var request = require('request');
-var iconv = require('iconv-lite');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -32,7 +31,6 @@ router.get('/parada/:num', function(req, res, next) {
 
 			// Get the name of the bus line
 			var title = $('#mainleft0').find("h1").eq(0).text();
-			var str = iconv.decode(title, 'win1252');
 
 			// Get the timetable of the next buses
 			var horarios = [];
@@ -47,8 +45,10 @@ router.get('/parada/:num', function(req, res, next) {
 				horarios.push(ruta);
 			});
 
-			res.render('index', { title: str, horarios: horarios });
+			res.render('index', { title: title, horarios: horarios });
 
+		} else {
+			res.render('error', { message: "Error", error: error });
 		}
 
 	});
