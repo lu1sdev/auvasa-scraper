@@ -2,21 +2,26 @@ extends layout
 
 block content
 	h1= title
-
-	table
-		tr
-			td Linea
-			td Dest
-			td Tiempo
 	
-		for horario in horarios
-			if horario.tiempo != 0
-				tr
-					td #{horario.linea}
-					td #{horario.dest}
-					td #{horario.tiempo}
-			else
-				tr.blink
-					td #{horario.linea}
-					td #{horario.dest}
-					td #{horario.tiempo}
+	if horarios.length != 0
+		table
+			tr
+				td Linea
+				td Dest
+				td Tiempo
+			each horario in horarios
+				if horario.tiempo != 0
+					tr
+						td #{horario.linea}
+						td #{horario.dest}
+						td #{horario.tiempo}
+				else
+					tr.blink
+						td #{horario.linea}
+						td #{horario.dest}
+						td #{horario.tiempo}
+	else
+		p No hay autobuses próximos
+
+	p
+		a(href="/") Inicio
