@@ -9,7 +9,7 @@ var request = require('request');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('main', { title: 'Express' });
+  res.render('main', { title: 'Auvasa Scraper' });
 });
 
 router.get('/parada/:num', function(req, res, next) {
@@ -36,11 +36,13 @@ router.get('/parada/:num', function(req, res, next) {
 			var horarios = [];
 
 			$(".style36").each(function(i, element) {
-				var linea = $(this).find("td").eq(0).text();
-				var dest = $(this).find("td").eq(1).text();
-				var tiempo = $(this).find("td").eq(2).text();
+				var $td = $(this).find("td");
 
-				var ruta = {linea: linea, dest: dest, tiempo: tiempo};
+				var linea = $td.eq(0).text();
+				var dest = $td.eq(1).text();
+				var tiempo = $td.eq(2).text();
+
+				var ruta = { linea: linea, dest: dest, tiempo: tiempo };
 
 				horarios.push(ruta);
 			});
