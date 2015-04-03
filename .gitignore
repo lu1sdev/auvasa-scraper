@@ -28,4 +28,3 @@ node_modules
 
 # Express SASS cache
 public/.sass-cache
-public/stylesheets/*.css
