@@ -1,6 +1,6 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 20px;
+  font: 14px "Helvetica Neue", Arial, sans-serif;
 }
 
 a {
@@ -9,21 +9,45 @@ a {
 
 table {
   background-color: #eee;
+  width: 100%;
+  font: 20px "Helvetica Neue", Arial, sans-serif;
 }
-table tr:first-child {
+table th {
+	padding: 10px;
   font-weight: 700;
+  background-color: #ddd;
 }
-table td {
+table tr td {
   padding: 10px;
+}
+table tr td:first-child {
+  text-align: right;
+}
+table tr td:last-child {
+  text-align: center;
 }
 
 .blink {
   color: red;
-  animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-name: blink;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-timing-function: ease-in-out; animation-duration: 1s;
   animation-name: blink;
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-timing-function: ease-in-out;
+}
+
+
+@-webkit-keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 @keyframes blink {
@@ -34,6 +58,8 @@ table td {
     opacity: 0;
   }
 }
+
+
 
 img {
 	width: 100px;
