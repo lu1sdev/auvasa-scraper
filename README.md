@@ -4,6 +4,6 @@
 
 Uso:
 
-http://localhost/parada/:num
+https://auvasa-scraper.herokuapp.com/parada/xxx
 
-Donde :num es el número de la parada.
+Donde xxx es el número de la parada.
