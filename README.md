@@ -6,4 +6,6 @@ Uso:
 
 https://auvasa-scraper.herokuapp.com/parada/xxx
 
-Donde xxx es el número de la parada.
+Donde xxx es el número de la parada. Para ver algunos ejemplos ir a la página inicial:
+
+https://auvasa-scraper.herokuapp.com
