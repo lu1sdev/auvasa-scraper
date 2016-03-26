@@ -14,7 +14,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/parada/:num', (req, res, next) => {
 
-  const url = 'http://www.auvasa.es/paradamb.asp?codigo=' + req.params.num;
+  const url = 'http://www.auvasa.es/parada.asp?codigo=' + req.params.num;
 
   // The structure of our request call
   // The first parameter is our URL
@@ -29,18 +29,18 @@ router.get('/parada/:num', (req, res, next) => {
       // give us jQuery functionality
       const $ = cheerio.load(html);
 
-      // Get the name of the bus line
-      const title = $('#mainleft0').find('h1').eq(0).text();
+      // Get the name of the bus stop
+      const title = $('.col_three_fifth').find('h5').eq(0).text();
 
       // Get the timetable of the next buses
       const horarios = [];
 
-      $('.style36').each((i, element) => {
-        const $td = $(this).find('.style38');
+      $('.table-hover tbody').each((i, element) => {
+        const $td = $(element).find('td');
 
         const linea = $td.eq(0).text();
-        const dest = $td.eq(2).text();
-        const tiempo = $td.eq(3).text();
+        const dest = $td.eq(3).text();
+        const tiempo = $td.eq(4).text();
 
         const ruta = { linea: linea, dest: dest, tiempo: tiempo };
 
