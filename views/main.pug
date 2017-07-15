@@ -2,16 +2,20 @@ extends layout
 
 block content
 	h1= title
-	p Aplicación web para ver cuánto tiempo de espera hay en cada parada de autobús.
+	p API que devuelve los tiempos de espera hay en cada parada de autobús.
 	p
 		strong Ejemplos
-	p
-		a(href="/parada/812") Fuente dorada
-	p
-		a(href="/parada/1156") Recoletos esq Pza Zorrilla
-	p
-		a(href="/parada/992") Pº Zorrilla 65 fte. El Corte Inglés 
-	p Cambiar el número del final de la ruta por el número de parada
+	ul
+		li Fuente dorada
+			a(href="/api/stop/812") [API]
+			a(href="/web/stop/812") [WEB]
+		li Recoletos esq Pza Zorrilla
+			a(href="/api/stop/1156") [API]
+			a(href="/web/stop/1156") [WEB]
+		li Pº Zorrilla 65 fte. El Corte Inglés
+			a(href="/api/stop/992") [API]
+			a(href="/web/stop/992") [WEB]
+	p Cambiar el número del final de la ruta por el identificador de parada
 	hr
 	p
 		a(href="https://github.com/luisddm/AuvasaScraper")

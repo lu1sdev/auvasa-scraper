@@ -2,24 +2,31 @@ extends layout
 
 block content
 	h1= title
-	
-	if horarios.length != 0
+
+	if timetable.length != 0
 		table
 			tr
 				th Línea
+				th PMR
 				th Destino
-				th Tiempo
-			each horario in horarios
-				if horario.tiempo != 0
+				th Tiempo (min)
+			each bus in timetable
+				if bus.time != 0
 					tr
-						td #{horario.linea}
-						td #{horario.dest}
-						td #{horario.tiempo}
+						td #{bus.line}
+						td
+							if bus.prm
+								span ✓
+						td #{bus.destination}
+						td #{bus.time}
 				else
 					tr.blink
-						td #{horario.linea}
-						td #{horario.dest}
-						td #{horario.tiempo}
+						td #{bus.line}
+						td
+							if bus.prm
+								span ✓
+						td #{bus.destination}
+						td #{bus.time}
 	else
 		p No hay autobuses próximos
 

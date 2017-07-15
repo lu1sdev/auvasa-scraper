@@ -7,6 +7,12 @@ a {
   color: #00B7FF;
 }
 
+li a {
+  margin-left: 8px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
 table {
   background-color: #eee;
   width: 100%;
