@@ -26,13 +26,13 @@
     "type": "git",
     "url": "git+https://luisddm@github.com/luisddm/AuvasaScraper.git"
   },
-  "author": "Luis de Dios Martin",
+  "author": "luisddm",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/luisddm/AuvasaScraper/issues"
   },
   "homepage": "https://github.com/luisddm/AuvasaScraper#readme",
   "engines": {
-    "node": "~8.0.0"
+    "node": "~10.0.0"
   }
 }
