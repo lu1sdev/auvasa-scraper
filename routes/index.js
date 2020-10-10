@@ -1,6 +1,6 @@
 const express = require('express');
 const cheerio = require('cheerio');
-const request = require('request');
+const axios = require('axios');
 
 const router = express.Router();
 
@@ -41,40 +41,39 @@ router.get('/', (req, res, next) => {
   res.render('main', { title: 'Auvasa Scraper' });
 });
 
-router.get('/web/stop/:id', (req, res, next) => {
+router.get('/web/stop/:id', async (req, res, next) => {
   const uri = `${host}/${namespace}?codigo=${req.params.id}`;
 
-  // The structure of our request call
-  // The first parameter is our URL
-  // The callback function takes 3 parameters, an error, response status code and the html
-
-  request({ uri, encoding: 'binary' }, (error, response, html) => {
-    // First we'll check to make sure no errors occurred when making the request
-
-    if (!error) {
+  axios({
+    method: 'GET',
+    url: uri,
+    responseType: 'arraybuffer',
+    responseEncoding: 'binary',
+  })
+    .then((response) => {
+      const html = response.data.toString('binary');
       res.render('index', getTimetable(html, +req.params.id));
-    } else {
-      res.render('error', { message: 'Error', error });
-    }
-  });
+    }).catch((error) => {
+      res.render('error', { message: 'Error', error: error.response });
+    });
 });
 
-router.get('/api/stop/:id', (req, res, next) => {
+router.get('/api/stop/:id', async (req, res, next) => {
   const uri = `${host}/${namespace}?codigo=${req.params.id}`;
 
-  // The structure of our request call
-  // The first parameter is our URL
-  // The callback function takes 3 parameters, an error, response status code and the html
-
-  request({ uri, encoding: 'binary' }, (error, response, html) => {
-    // First we'll check to make sure no errors occurred when making the request
-
-    if (!error) {
+  axios({
+    method: 'GET',
+    url: uri,
+    responseType: 'arraybuffer',
+    responseEncoding: 'binary',
+  })
+    .then((response) => {
+      const html = response.data.toString('binary');
       res.json(getTimetable(html, +req.params.id));
-    } else {
-      res.json({ error });
-    }
-  });
+    })
+    .catch((error) => {
+      res.json({ error: error.response });
+    });
 });
 
 module.exports = router;
